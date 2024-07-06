@@ -94,6 +94,22 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
+          );
+        }),
+        Consumer<HomeProvider>(builder: (context, value, child) {
+          return SizedBox(
+            height: 200,
+            child: ListView.builder(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              itemCount: value.event!.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Detcard(ev: value.event![index]);
+              },
+            ),
+          );
+        })
+      ],
     );
 
     //

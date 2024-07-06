@@ -62,6 +62,7 @@ class _EventDetailsState extends State<EventDetails> {
                     ),
                   ),
                 ),
+ 
                 const SizedBox(
                   height: 20,
                 ),
