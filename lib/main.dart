@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:v2/core/feature/color.dart';
+import 'package:v2/remote/models/event_model.dart';
 import 'package:v2/remote/providers/home_provider.dart';
 import 'package:v2/remote/providers/search_provider.dart';
 import 'package:v2/screens/auth/login.dart';
@@ -48,7 +49,7 @@ class MyApp extends StatelessWidget {
         theme: defaultTheme,
         key: GlobalKey(),
         routerConfig: GoRouter(
-          initialLocation: '/home',
+          initialLocation: '/',
           navigatorKey: rootNavigatorKey,
           routes: [
             GoRoute(
@@ -69,6 +70,16 @@ class MyApp extends StatelessWidget {
                     ),
                   ),
                 ]),
+                StatefulShellBranch(
+                    navigatorKey: searchTabNavigatorKey,
+                    routes: [
+                      GoRoute(
+                        path: '/search',
+                        pageBuilder: (context, state) => const NoTransitionPage(
+                          child: SearchPage(),
+                        ),
+                      ),
+                    ]),
                 StatefulShellBranch(
                   navigatorKey: mapTabNavigatorKey,
                   routes: [
@@ -96,33 +107,21 @@ class MyApp extends StatelessWidget {
             GoRoute(
               path: '/event-details',
               builder: (BuildContext context, GoRouterState state) {
-                // final data = state.extra! as Map<String, dynamic>;
-                return const EventDetails(
-                    // product: data['event'] != null
-                    //     ? data['product'] as Event
-                    //     : null,
-                    );
+                final data = state.extra! as Map<String, dynamic>;
+                return EventDetails(
+                  ev: data['event'] != null ? data['event'] as Event : null,
+                );
               },
             ),
             GoRoute(
                 path: '/sign-up',
                 builder: (BuildContext context, GoRouterState state) {
-                  // final data = state.extra! as Map<String, dynamic>;
-                  return const SignUp(
-                      // product: data['event'] != null
-                      //     ? data['product'] as Event
-                      //     : null,
-                      );
+                  return const SignUp();
                 }),
             GoRoute(
                 path: '/login',
                 builder: (BuildContext context, GoRouterState state) {
-                  // final data = state.extra! as Map<String, dynamic>;
-                  return const Login(
-                      // product: data['event'] != null
-                      //     ? data['product'] as Event
-                      //     : null,
-                      );
+                  return const Login();
                 }),
             GoRoute(
               path: '/edit_profile',

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:v2/remote/providers/home_provider.dart';
 import 'package:v2/widgets/category_card.dart';
+import 'package:v2/widgets/detcard.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -54,11 +55,7 @@ class _HomePageState extends State<HomePage> {
               scrollDirection: Axis.horizontal,
               itemCount: value.event!.length,
               itemBuilder: (BuildContext context, int index) {
-                return CategoryCardWidget(
-                  text: value.event![index].title,
-                  icon: value.event![index].imageUrl,
-                  color: null,
-                );
+                return Detcard(ev: value.event![index]);
               },
             ),
           );

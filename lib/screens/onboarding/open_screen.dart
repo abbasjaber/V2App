@@ -13,8 +13,13 @@ class OpenScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
+      extendBody: true,
       body: OnBoardingSlider(
+        onFinish: () {
+          context.push('/login');
+        },
         headerBackgroundColor: darkGreyColor,
+        pageBackgroundColor: darkGreyColor,
         finishButtonStyle: const FinishButtonStyle(
           backgroundColor: lightGreyColor,
         ),
@@ -39,9 +44,21 @@ class OpenScreen extends StatelessWidget {
           ],
         ),
         background: [
-          Image.asset('assets/image/Screenshot 2024-07-06 121129.png'),
-          Image.asset('assets/image/Screenshot 2024-07-06 121138.png'),
-          Image.asset('assets/image/Screenshot 2024-07-06 121114.png'),
+          Image.asset(
+            'assets/image/Screenshot 2024-07-06 121129.png',
+            height: MediaQuery.sizeOf(context).height,
+            fit: BoxFit.cover,
+          ),
+          Image.asset(
+            'assets/image/Screenshot 2024-07-06 121138.png',
+            height: MediaQuery.sizeOf(context).height,
+            fit: BoxFit.cover,
+          ),
+          Image.asset(
+            'assets/image/Screenshot 2024-07-06 121114.png',
+            height: MediaQuery.sizeOf(context).height,
+            fit: BoxFit.cover,
+          ),
         ],
         totalPage: 3,
         speed: 1.8,
@@ -52,10 +69,15 @@ class OpenScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Text(
-                  'Be a Hero with ImpactBuddies',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
+                Card(
+                  child: Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Text(
+                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ),
               ],
@@ -64,13 +86,21 @@ class OpenScreen extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 40),
             child: const Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
-              ],
-            ),
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Card(
+                    child: Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Text(
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ]),
           ),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 40),
@@ -78,10 +108,15 @@ class OpenScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
+                Card(
+                  child: Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Text(
+                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ),
               ],
