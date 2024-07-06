@@ -10,8 +10,15 @@ class MapPage extends StatefulWidget {
 class _HomePageState extends State<MapPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(child: Text('Map')),
+    return Column(
+      children: [
+        Center(
+          child: Image.asset(
+            'assets/image/map.png',
+            fit: BoxFit.cover,
+          ),
+        )
+      ],
     );
   }
 }

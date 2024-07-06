@@ -15,8 +15,6 @@ class _HomePageState extends State<SearchPage> {
   SearchProvider? _SearchProvider;
 
   Future<void> _getSearch() async {
-    _SearchProvider!.getCategories();
-    _SearchProvider!.getEvents();
     _SearchProvider!.getSearch();
   }
 
@@ -45,7 +43,6 @@ class _HomePageState extends State<SearchPage> {
             ),
             onSubmitted: (value) {
               _getSearch();
-
             },
           ),
         ),

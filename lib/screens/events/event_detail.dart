@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:v2/remote/models/event_model.dart';
+import 'package:v2/widgets/gradient_button.dart';
 
 class EventDetails extends StatefulWidget {
   final Event? ev;
@@ -55,11 +56,17 @@ class _EventDetailsState extends State<EventDetails> {
                     scrollDirection: Axis.horizontal,
                     itemCount: 10,
                     itemBuilder: (context, index) => CircleAvatar(
-                      backgroundImage: const NetworkImage(
-                          "https://ui-avatars.com/api/?size=128"),
+                      backgroundImage: NetworkImage(
+                          "https://www.w3schools.com/w3images/avatar${(index % 4) + 1}.png"),
                       radius: 30,
                     ),
                   ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const GradientButton(
+                  title: "Voluneeee",
                 ),
               ],
             ),

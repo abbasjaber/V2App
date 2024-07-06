@@ -23,7 +23,12 @@ class OpenScreen extends StatelessWidget {
         finishButtonStyle: const FinishButtonStyle(
           backgroundColor: lightGreyColor,
         ),
-        skipTextButton: const Text('Skip'),
+        skipTextButton: const Text(
+          'Skip',
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
         finishButtonText: 'Login',
         finishButtonTextStyle: const TextStyle(
           color: Colors.white,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:v2/core/feature/color.dart';
+import 'package:v2/widgets/gradient_button.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -26,6 +28,7 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Form(
@@ -104,13 +107,11 @@ class _SignUpState extends State<SignUp> {
               const SizedBox(
                 height: 30,
               ),
-              ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    // Perform sign up logic here
-                  }
+              GradientButton(
+                onButtonPressed: () {
+                  context.go('/home');
                 },
-                child: const Text('Sign Up'),
+                title: 'Register',
               ),
               const SizedBox(
                 height: 20,

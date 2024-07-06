@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:v2/core/feature/color.dart';
 import 'package:v2/remote/models/event_model.dart';
 
 // ignore: must_be_immutable
@@ -53,7 +54,7 @@ class Detcard extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.all(15.0),
+          padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 5),
           child: GestureDetector(
             onTap: () {
               Map<String, dynamic> data = <String, dynamic>{};
@@ -65,7 +66,7 @@ class Detcard extends StatelessWidget {
                 ev!.category!,
                 style: const TextStyle(color: Colors.white, fontSize: 12),
               ),
-              backgroundColor: Colors.red,
+              backgroundColor: Colors.cyan,
               avatar: Image.network(ev!.imageUrl!),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
