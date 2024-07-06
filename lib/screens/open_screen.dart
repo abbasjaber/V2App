@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_onboarding_slider/flutter_onboarding_slider.dart';
+import 'package:go_router/go_router.dart';
 import 'package:v2/core/feature/color.dart';
 
 class OpenScreen extends StatelessWidget {
@@ -33,7 +34,9 @@ class OpenScreen extends StatelessWidget {
                   )),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.go('/home');
+                  },
                   child: const Text('Explore'),
                 ),
               ],
