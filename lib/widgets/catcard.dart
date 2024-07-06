@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
-class CategoryCardWidget extends StatelessWidget {
-  final Color? color;
-  final String? text;
-  final String? icon;
-  const CategoryCardWidget({super.key, this.color, this.text, this.icon});
+// ignore: must_be_immutable
+class Catcard extends StatelessWidget {
+  Color color;
+  String text;
+  Icon icon;
+  Catcard(
+      {super.key, required this.color, required this.text, required this.icon});
 
   @override
   Widget build(BuildContext context) {
@@ -19,16 +21,16 @@ class CategoryCardWidget extends StatelessWidget {
             color: color,
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
-              color: color ?? Colors.red,
+              color: color,
               width: 2,
             ),
           ),
-          child: Image.network(icon!) ?? Container(),
+          child: icon,
         ),
         const SizedBox(
           height: 10,
         ),
-        Text(text!),
+        Text(text),
       ],
     );
   }
