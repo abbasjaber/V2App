@@ -1,7 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:v2/remote/providers/example_provider.dart';
+import 'package:v2/screens/account_page.dart';
+import 'package:v2/screens/events/event_detail.dart';
+import 'package:v2/screens/home_pages.dart';
+import 'package:v2/screens/main_page.dart';
+import 'package:v2/screens/map_page.dart';
+import 'package:v2/screens/search_page.dart';
+import 'remote/di/di_container.dart' as di;
+import 'remote/providers/auth_provider.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await di.init();
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (context) => di.sl<AuthProvider>()),
+    ChangeNotifierProvider(create: (context) => di.sl<ExampleProvider>()),
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -10,29 +27,109 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'V2',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+    final rootNavigatorKey = GlobalKey<NavigatorState>();
+    final homeTabNavigatorKey = GlobalKey<NavigatorState>();
+    final searchTabNavigatorKey = GlobalKey<NavigatorState>();
+    final mapTabNavigatorKey = GlobalKey<NavigatorState>();
+    final accountTabNavigatorKey = GlobalKey<NavigatorState>();
+
+    return MaterialApp.router(
+        title: 'V2',
+        theme: ThemeData(
+          // This is the theme of your application.
+          //
+          // TRY THIS: Try running your application with "flutter run". You'll see
+          // the application has a purple toolbar. Then, without quitting the app,
+          // try changing the seedColor in the colorScheme below to Colors.green
+          // and then invoke "hot reload" (save your changes or press the "hot
+          // reload" button in a Flutter-supported IDE, or press "r" if you used
+          // the command line to start the app).
+          //
+          // Notice that the counter didn't reset back to zero; the application
+          // state is not lost during the reload. To reset the state, use hot
+          // restart instead.
+          //
+          // This works for code too, not just values: Most code changes can be
+          // tested with just a hot reload.
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          fontFamily: GoogleFonts.montserrat().fontFamily,
+          useMaterial3: true,
+        ),
+        key: GlobalKey(),
+        routerConfig: GoRouter(
+          initialLocation: '/home',
+          navigatorKey: rootNavigatorKey,
+          routes: [
+            // GoRoute(
+            //   path: '/',
+            //   pageBuilder: (context, state) => const NoTransitionPage(
+            //     child: SelectLocationPage(),
+            //   ),
+            // ),
+            StatefulShellRoute.indexedStack(
+              builder: (context, state, navigationShell) {
+                return MainPage(child: navigationShell);
+              },
+              branches: [
+                StatefulShellBranch(
+                  navigatorKey: homeTabNavigatorKey,
+                  routes: [
+                    GoRoute(
+                      path: '/home',
+                      pageBuilder: (context, state) => const NoTransitionPage(
+                        child: HomePage(),
+                      ),
+                    ),
+                  ],
+                ),
+                StatefulShellBranch(
+                  navigatorKey: searchTabNavigatorKey,
+                  routes: [
+                    GoRoute(
+                      path: '/search',
+                      pageBuilder: (context, state) => const NoTransitionPage(
+                        child: SearchPage(),
+                      ),
+                    ),
+                  ],
+                ),
+                StatefulShellBranch(
+                  navigatorKey: mapTabNavigatorKey,
+                  routes: [
+                    GoRoute(
+                      path: '/map',
+                      pageBuilder: (context, state) => const NoTransitionPage(
+                        child: MapPage(),
+                      ),
+                    ),
+                  ],
+                ),
+                StatefulShellBranch(
+                  navigatorKey: accountTabNavigatorKey,
+                  routes: [
+                    GoRoute(
+                      path: '/account',
+                      pageBuilder: (context, state) => const NoTransitionPage(
+                        child: AccountPage(),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            GoRoute(
+              path: '/event-details',
+              builder: (BuildContext context, GoRouterState state) {
+                // final data = state.extra! as Map<String, dynamic>;
+                return EventDetails(
+                    // product: data['event'] != null
+                    //     ? data['product'] as Event
+                    //     : null,
+                    );
+              },
+            ),
+          ],
+        ));
   }
 }
 
