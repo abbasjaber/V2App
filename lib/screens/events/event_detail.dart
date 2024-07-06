@@ -66,7 +66,7 @@ class _EventDetailsState extends State<EventDetails> {
                   height: 20,
                 ),
                 const GradientButton(
-                  title: "Voluneeee",
+                  title: "Volunte Now!",
                 ),
               ],
             ),
