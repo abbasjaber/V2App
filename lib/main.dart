@@ -42,6 +42,8 @@ class MyApp extends StatelessWidget {
     final accountTabNavigatorKey = GlobalKey<NavigatorState>();
 
     return MaterialApp.router(
+        debugShowMaterialGrid: false,
+        debugShowCheckedModeBanner: false,
         title: 'V2',
         theme: defaultTheme,
         key: GlobalKey(),
