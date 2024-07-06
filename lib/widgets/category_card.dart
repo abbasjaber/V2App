@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
-class Catcard extends StatelessWidget {
-  Color color;
-  String text;
-  Icon icon;
-  Catcard(
+class CategoryCardWidget extends StatelessWidget {
+  final Color color;
+  final String text;
+  final Icon icon;
+  const CategoryCardWidget(
       {super.key, required this.color, required this.text, required this.icon});
 
   @override

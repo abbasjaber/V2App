@@ -121,7 +121,7 @@ class MyApp extends StatelessWidget {
               path: '/event-details',
               builder: (BuildContext context, GoRouterState state) {
                 // final data = state.extra! as Map<String, dynamic>;
-                return EventDetails(
+                return const EventDetails(
                     // product: data['event'] != null
                     //     ? data['product'] as Event
                     //     : null,
