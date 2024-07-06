@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:v2/core/feature/color.dart';
+import 'package:v2/widgets/gradient_button.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -85,28 +87,29 @@ class _SignUpState extends State<Login> {
               const SizedBox(
                 height: 30,
               ),
-              ElevatedButton(
-                onPressed: () {
+              GradientButton(
+                onButtonPressed: () {
                   if (_formKey.currentState!.validate()) {
                     // Perform sign up logic here
                   }
                 },
-                child: const Text('Sign Up'),
+                title: 'Login',
               ),
               const SizedBox(
                 height: 20,
               ),
               GestureDetector(
                 onTap: () {
+                  context.push('sing-up');
                   // Navigator.push(context, LoginPage.route());
                 },
                 child: RichText(
                   text: TextSpan(
-                    text: 'Already have an account? ',
+                    text: 'Don\'t have an account? ',
                     style: Theme.of(context).textTheme.titleMedium,
                     children: [
                       TextSpan(
-                        text: 'Log In',
+                        text: 'Sign Up',
                         style:
                             Theme.of(context).textTheme.titleMedium?.copyWith(
                                   color: blue,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:v2/core/feature/color.dart';
 
 class CategoryCardWidget extends StatelessWidget {
   final Color? color;
@@ -19,11 +20,11 @@ class CategoryCardWidget extends StatelessWidget {
             color: color,
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
-              color: color ?? Colors.red,
+              color: color ?? primaryColor.withOpacity(0.2),
               width: 2,
             ),
           ),
-          child: Image.network(icon!) ?? Container(),
+          child: icon != null ? Image.network(icon!) : Container(),
         ),
         const SizedBox(
           height: 10,

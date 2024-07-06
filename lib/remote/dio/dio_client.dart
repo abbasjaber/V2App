@@ -6,7 +6,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:v2/remote/constants/app_constants.dart';
 
 import 'logging_interceptor.dart';
-import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 
 class DioClient {
   late String baseUrl;

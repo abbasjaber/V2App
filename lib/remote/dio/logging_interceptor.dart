@@ -41,6 +41,7 @@ class LoggingInterceptor extends InterceptorsWrapper {
   }
 
   @override
+  // ignore: deprecated_member_use
   Future onError(DioError err, ErrorInterceptorHandler handler) async {
     // print(
     //     "ERROR[${err?.response?.statusCode}] => PATH: ${err?.requestOptions?.path}");

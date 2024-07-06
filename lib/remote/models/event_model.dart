@@ -1,5 +1,3 @@
-import 'package:v2/remote/models/user_model.dart';
-
 class Event {
   String? sId;
   String? title;
@@ -9,7 +7,7 @@ class Event {
   String? imageUrl;
   Location? location;
   String? owner;
-  List<UserModel>? volunteers;
+  List<String>? volunteers;
   String? category;
   String? createdAt;
   String? updatedAt;
@@ -40,9 +38,9 @@ class Event {
         json['location'] != null ? Location.fromJson(json['location']) : null;
     owner = json['owner'];
     if (json['volunteers'] != null) {
-      volunteers = <UserModel>[];
+      volunteers = <String>[];
       json['volunteers'].forEach((v) {
-        volunteers!.add(UserModel.fromJson(v));
+        volunteers!.add(v);
       });
     }
     category = json['category'];
@@ -64,7 +62,7 @@ class Event {
     }
     data['owner'] = owner;
     if (volunteers != null) {
-      data['volunteers'] = volunteers!.map((v) => v.toJson()).toList();
+      data['volunteers'] = volunteers!.map((v) => v.toString()).toList();
     }
     data['category'] = category;
     data['createdAt'] = createdAt;
