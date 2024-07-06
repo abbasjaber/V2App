@@ -71,6 +71,16 @@ class MyApp extends StatelessWidget {
                   ),
                 ]),
                 StatefulShellBranch(
+                    navigatorKey: searchTabNavigatorKey,
+                    routes: [
+                      GoRoute(
+                        path: '/search',
+                        pageBuilder: (context, state) => const NoTransitionPage(
+                          child: SearchPage(),
+                        ),
+                      ),
+                    ]),
+                StatefulShellBranch(
                   navigatorKey: mapTabNavigatorKey,
                   routes: [
                     GoRoute(
