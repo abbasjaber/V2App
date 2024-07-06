@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:v2/remote/dio/dio_client.dart';
 import 'package:v2/remote/exception/api_error_handler.dart';
 import 'package:v2/remote/interface/home_inteface.dart';
-import 'package:v2/remote/interface/repo_inteface.dart';
 import 'package:v2/remote/response/api_response.dart';
 
 class HomeRepos extends HomeAbstract {

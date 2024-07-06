@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:v2/remote/models/event_model.dart';
 
 class EventDetails extends StatefulWidget {
-  final String? bannerimage;
-  final String? title;
-  final String? deatials;
-  final String? circleAvatar;
+  final Event? ev;
+
   const EventDetails({
     super.key,
-    this.bannerimage,
-    this.title,
-    this.deatials,
-    this.circleAvatar,
+    this.ev,
   });
 
   @override
@@ -20,44 +16,56 @@ class EventDetails extends StatefulWidget {
 class _EventDetailsState extends State<EventDetails> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          height: 200,
-          width: MediaQuery.of(context).size.width,
-          child: Image.network(
-            widget.bannerimage!,
-            fit: BoxFit.fill,
-          ),
-        ),
-        const SizedBox(
-          height: 30,
-        ),
-        Text(widget.title!),
-        const SizedBox(
-          height: 30,
-        ),
-        Text(
-          widget.deatials!,
-          maxLines: null,
-        ),
-        const SizedBox(
-          height: 30,
-        ),
-        SizedBox(
-          height: 50,
-          child: ListView.builder(
-            shrinkWrap: true,
-            scrollDirection: Axis.horizontal,
-            itemCount: 10,
-            itemBuilder: (context, index) => CircleAvatar(
-              backgroundImage: NetworkImage(widget.circleAvatar!),
-              radius: 30,
+    return Scaffold(
+      appBar: AppBar(),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            height: 200,
+            width: MediaQuery.of(context).size.width,
+            child: Image.network(
+              widget.ev!.imageUrl!,
+              fit: BoxFit.fill,
             ),
           ),
-        ),
-      ],
+          const SizedBox(
+            height: 10,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(widget.ev!.title!),
+                const SizedBox(
+                  height: 15,
+                ),
+                Text(
+                  widget.ev!.description!,
+                  maxLines: null,
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                SizedBox(
+                  height: 50,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 10,
+                    itemBuilder: (context, index) => CircleAvatar(
+                      backgroundImage: const NetworkImage(
+                          "https://ui-avatars.com/api/?size=128"),
+                      radius: 30,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -1,22 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:v2/remote/models/event_model.dart';
 
 // ignore: must_be_immutable
 class Detcard extends StatelessWidget {
-  final String? text;
-  final String? image;
-  final String? chiptitle;
-  final Color? color;
-  final Color? textcolor;
-  final String? icon;
+  final Event? ev;
   const Detcard({
     super.key,
-    this.text,
-    required this.image,
-    required this.chiptitle,
-    required this.color,
-    required this.icon,
-    this.textcolor,
+    this.ev,
   });
 
   @override
@@ -24,17 +15,17 @@ class Detcard extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          width: 200,
-          height: 200,
           margin: const EdgeInsets.symmetric(horizontal: 10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
-              color: Colors.grey,
+              color: Colors.transparent,
               width: 2,
             ),
           ),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ClipRRect(
                 borderRadius: const BorderRadius.only(
@@ -42,7 +33,8 @@ class Detcard extends StatelessWidget {
                   topRight: Radius.circular(10),
                 ),
                 child: Image.network(
-                  image!,
+                  ev!.imageUrl!,
+                  fit: BoxFit.cover,
                 ),
               ),
               const SizedBox(
@@ -50,9 +42,9 @@ class Detcard extends StatelessWidget {
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Text(
-                    text!,
+                    ev!.title!,
                     maxLines: null,
                   ),
                 ),
@@ -64,17 +56,17 @@ class Detcard extends StatelessWidget {
           padding: const EdgeInsets.all(15.0),
           child: GestureDetector(
             onTap: () {
-              context.go('/event-details');
+              Map<String, dynamic> data = <String, dynamic>{};
+              data['event'] = ev;
+              context.push('/event-details', extra: data);
             },
             child: Chip(
               label: Text(
-                chiptitle!,
-                style: TextStyle(
-                  color: textcolor ?? Colors.white,
-                ),
+                ev!.category!,
+                style: const TextStyle(color: Colors.white, fontSize: 12),
               ),
-              backgroundColor: Colors.blue,
-              avatar: Image.network(icon!),
+              backgroundColor: Colors.red,
+              avatar: Image.network(ev!.imageUrl!),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
                 side: const BorderSide(color: Colors.transparent),
