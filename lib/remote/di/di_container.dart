@@ -8,9 +8,11 @@ import 'package:v2/remote/dio/logging_interceptor.dart';
 import 'package:v2/remote/providers/auth_provider.dart';
 import 'package:v2/remote/providers/example_provider.dart';
 import 'package:v2/remote/providers/home_provider.dart';
+import 'package:v2/remote/providers/search_provider.dart';
 import 'package:v2/remote/repositories/auth_repository.dart';
 import 'package:v2/remote/repositories/example_repository.dart';
 import 'package:v2/remote/repositories/home_repository.dart';
+import 'package:v2/remote/repositories/search_repository.dart';
 
 final sl = GetIt.instance;
 
@@ -26,11 +28,13 @@ Future<void> init() async {
 
   sl.registerLazySingleton(() => ExampleRepo(dioClient: sl()));
   sl.registerLazySingleton(() => HomeRepos(dioClient: sl()));
+  sl.registerLazySingleton(() => SearchRepos(dioClient: sl()));
 
   // Providers
   sl.registerFactory(() => AuthProvider(authRepo: sl()));
   sl.registerFactory(() => ExampleProvider(examoleRepo: sl()));
   sl.registerFactory(() => HomeProvider(homeRepos: sl()));
+  sl.registerFactory(() => SearchProvider(searchRepos: sl()));
 
   // External
   final sharedPreferences = await SharedPreferences.getInstance();
