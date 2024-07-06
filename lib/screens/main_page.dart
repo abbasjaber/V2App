@@ -55,6 +55,7 @@ class _MainPageState extends State<MainPage> {
       canPop: false, //It should be false to work
       onPopInvoked: (value) async => onWillPop(value),
       child: Scaffold(
+        appBar: AppBar(actions: []),
         bottomNavigationBar: BottomAppBar(
             height: 90,
             child: Row(

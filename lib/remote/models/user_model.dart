@@ -3,6 +3,7 @@ class UserModel {
   String? name;
   String? email;
   String? password;
+  String? image;
 
   get getId => id;
   set setId(id) => this.id = id;
@@ -20,6 +21,7 @@ class UserModel {
     name = json['name'];
     email = json['email'];
     password = json['password'];
+    image = "https://ui-avatars.com/api/?size=128";
   }
 
   Map<String, dynamic> toJson() {
