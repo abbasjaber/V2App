@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:v2/core/feature/color.dart';
 import 'package:v2/remote/providers/home_provider.dart';
+import 'package:v2/remote/providers/search_provider.dart';
 import 'package:v2/screens/auth/login.dart';
 import 'package:v2/screens/onboarding/open_screen.dart';
 import 'package:v2/screens/auth/sign_up.dart';
@@ -23,6 +24,7 @@ void main() async {
     ChangeNotifierProvider(create: (context) => di.sl<AuthProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<ExampleProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<HomeProvider>()),
+    ChangeNotifierProvider(create: (context) => di.sl<SearchProvider>()),
   ], child: const MyApp()));
 }
 
