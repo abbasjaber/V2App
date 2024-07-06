@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:v2/core/page/open_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -24,7 +25,6 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     final rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -60,12 +60,12 @@ class MyApp extends StatelessWidget {
           initialLocation: '/home',
           navigatorKey: rootNavigatorKey,
           routes: [
-            // GoRoute(
-            //   path: '/',
-            //   pageBuilder: (context, state) => const NoTransitionPage(
-            //     child: SelectLocationPage(),
-            //   ),
-            // ),
+            GoRoute(
+              path: '/',
+              pageBuilder: (context, state) => const NoTransitionPage(
+                child: OpenScreen(),
+              ),
+            ),
             StatefulShellRoute.indexedStack(
               builder: (context, state, navigationShell) {
                 return MainPage(child: navigationShell);
