@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 ThemeData defaultTheme = ThemeData(
     appBarTheme: const AppBarTheme(
-        backgroundColor: primaryColor, foregroundColor: Colors.white),
+        backgroundColor: bgColor, foregroundColor: Colors.white),
     useMaterial3: true,
     cupertinoOverrideTheme: const NoDefaultCupertinoThemeData(
         textTheme: CupertinoTextThemeData(textStyle: TextStyle())),

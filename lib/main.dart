@@ -40,11 +40,10 @@ class MyApp extends StatelessWidget {
     final searchTabNavigatorKey = GlobalKey<NavigatorState>();
     final mapTabNavigatorKey = GlobalKey<NavigatorState>();
     final accountTabNavigatorKey = GlobalKey<NavigatorState>();
-    final signUpDetailNavigatorKey = GlobalKey<NavigatorState>();
-    final loginDetailNavigatorKey = GlobalKey<NavigatorState>();
-    final editDetailNavigatorKey = GlobalKey<NavigatorState>();
 
     return MaterialApp.router(
+        debugShowMaterialGrid: false,
+        debugShowCheckedModeBanner: false,
         title: 'V2',
         theme: defaultTheme,
         key: GlobalKey(),

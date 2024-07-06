@@ -26,6 +26,7 @@ class _SignUpState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Form(
@@ -100,8 +101,7 @@ class _SignUpState extends State<Login> {
               ),
               GestureDetector(
                 onTap: () {
-                  context.push('sing-up');
-                  // Navigator.push(context, LoginPage.route());
+                  context.push('/sign-up');
                 },
                 child: RichText(
                   text: TextSpan(
